@@ -4,7 +4,7 @@ testbed:
   credentials:
     default:
       username: cwuser
-      password: RZN5345EdrubpDte!@qwerty123
+      password: xxxxxxxxxxx
 
 devices:
   vnhchm01as01:
