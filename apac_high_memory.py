@@ -7,6 +7,7 @@
 import logging
 import jinja2
 import json
+import os
 from pyats import aetest
 from genie.testbed import load
 import requests
@@ -17,7 +18,7 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 #TODO: Get the logger for script
 log = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
-
+teams_webhook_url = os.environ.get('TEAMS_WEBHOOK')
 #TODO: Connect to device
 class Common_setup(aetest.CommonSetup):
     @aetest.subsection
@@ -57,7 +58,7 @@ class Memory_higher_than_80(aetest.Testcase):
 
                 if int(used_memory) > 80:
                     log.info(f"Memory test of {device} is FAILED ***")
-                    teams_webhook_url = "https://aligntech.webhook.office.com/webhookb2/7ed9a6c7-e811-4e71-956c-9e54f8b7d705@9ac44c96-980a-481b-ae23-d8f56b82c605/JenkinsCI/9ecff2f044b44cfcae37b0376ecd1540/9d21b513-f4ee-4b3b-995c-7a422a087a6c/V2-0LzN76qekmVrAPO1b9pX-4MwxVsHKo7lbMnV_iHFb81"
+                    
                     message = {
                     "text": f"WARNING: Memory usage of {device.upper()} is {used_memory}%, which exceeds the threshold of 80%."
                     }
@@ -89,3 +90,4 @@ if __name__ == ("__main__"):
     args, unknown = parser.parse_known_args()
 
     aetest.main(**vars(args))
+
