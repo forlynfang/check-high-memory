@@ -3,7 +3,7 @@
 testbed:
   credentials:
     default:
-      username: cwuser
+      username: xxxxx
       password: xxxxxxxxxxx
 
 devices:
